@@ -1,0 +1,55 @@
+/* Overall container spacing for the options list */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #f9f9f9;
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Title */
+.option-table-container h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Description text */
+.option-table-container > p {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Option Rows */
+.font-container,
+.age-container,
+.gender-container,
+.hist-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  transition: 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.font-container:hover,
+.age-container:hover,
+.gender-container:hover,
+.hist-container:hover {
+  border-color: #4a90e2;
+  background: #f0f6ff;
+  cursor: pointer;
+}

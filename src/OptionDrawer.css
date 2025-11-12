@@ -1,0 +1,39 @@
+.option-toggle-wrapper {
+  position: relative; /* parent positioning */
+}
+
+/* Drawer sits on top instead of taking layout space */
+.options-drawer {
+  position: fixed;
+  left: -500px; /* Fully off screen */
+  top: 80px; /* Adjust to look good under navbar or top margin */
+  width: 440px;
+  background: #ffffff;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: left 0.35s ease;
+  z-index: 2000; /* ensure on top */
+}
+
+/* When open → slide in */
+.options-drawer.open {
+  left: 20px; /* position drawer ON screen */
+}
+.options-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 3000;
+}
+
+
+

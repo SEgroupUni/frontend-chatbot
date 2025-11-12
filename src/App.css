@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  justify-content: center;   /* horizontal centering */
+  /* remove align-items if vertical centering not needed */
+  width: 100%;
+  min-height: 100vh;         /* optional, fills viewport */
+  margin: 0;
+  padding: 0;
+  background-color: #121212; /* optional */
+}
+
+.chatbox-wrapper {
+  display: flex;
+  justify-content: center;     /* center child horizontally */
+  align-items: center;         /* center child vertically */
+}
+

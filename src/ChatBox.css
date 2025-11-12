@@ -1,0 +1,55 @@
+
+/* ChatBox.css */
+.chat-box {
+  width: 400px;
+  height: 500px;
+  background-color: #101111;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Messages container scrollable */
+.chatbox-messages {
+  flex: 1;                  /* fill remaining height */
+  overflow-y: auto;         /* enable vertical scroll */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Individual chat bubble */
+.chat-bubble {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #0a0a0a;
+}
+
+
+/* User vs Chatbot styling (optional) */
+.chat-bubble.user {
+  align-self: flex-start;
+  background-color: #4418e2;
+}
+
+.chat-bubble.bot {
+  align-self: flex-end;
+  background-color: #661616;
+}
+.input-bubble input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  font-size: 14px;
+  box-shadow: none; /* Remove any shadow */
+}
+
+.input-bubble input::placeholder {
+  color: #fcfafa;
+}
