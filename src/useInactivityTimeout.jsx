@@ -9,28 +9,28 @@ export default function useInactivityTimeout(timeout = 10000) {
   const [isInactive, setIsInactive] = useState(false);
 
   useEffect(() => {
-    let timer;
+    if (isInactive) return; // already timed out, do nothing
+
+    let timer = setTimeout(() => setIsInactive(true), timeout);
 
     const resetTimer = () => {
-      clearTimeout(timer);
-      setIsInactive(false); // user active
-      timer = setTimeout(() => setIsInactive(true), timeout); // timeout triggers inactivity
+      // Only reset the timer if user hasn't timed out yet
+      if (!isInactive) {
+        clearTimeout(timer);
+        timer = setTimeout(() => setIsInactive(true), timeout);
+      }
     };
 
     // Listen for user activity
     window.addEventListener("keydown", resetTimer);
     window.addEventListener("mousemove", resetTimer);
 
-    // Start initial timer
-    resetTimer();
-
-    // Cleanup when component unmounts
     return () => {
       clearTimeout(timer);
       window.removeEventListener("keydown", resetTimer);
       window.removeEventListener("mousemove", resetTimer);
     };
-  }, [timeout]);
+  }, [timeout, isInactive]);
 
   return isInactive;
 }
