@@ -1,20 +1,40 @@
 import { useState } from "react";
 import './SelectedButton.css'
-export default function Font(){
-    const[Size, setSize] = useState(null)
 
-    const handleClick=(buttonIndex)=>{
-        setSize(buttonIndex);
-    }
+export default function Font({setUserOptions, currentSelection}){
+
+    const handleClick = (sizeValue) => {
+        setUserOptions((prev) => ({
+            ...prev,
+            fontSize: sizeValue, 
+        }))
+    };
     return(
         <div>
             <h2 style = {{textAlign: "center"}}>
                 FontSize:
             </h2>
             <h3>
-                <button className={`button ${Size === 0 ? 'selected' : ''}`}onClick={() => handleClick(0)}>Small</button>
-                <button className={`button ${Size === 1 ? 'selected' : ''}`}onClick={() => handleClick(1)}>Medium</button>
-                <button className={`button ${Size === 2 ? 'selected' : ''}`}onClick={() => handleClick(2)}>Large</button>
+                <button
+                    className={`button ${currentSelection === "Small" ? "selected" : ""}`}
+                    onClick={() => handleClick("Small")}
+                >
+                    Small
+                </button>
+
+                <button
+                    className={`button ${currentSelection === "Medium" ? "selected" : ""}`}
+                    onClick={() => handleClick("Medium")}
+                >
+                    Medium
+                </button>
+
+                <button
+                    className={`button ${currentSelection === "Large" ? "selected" : ""}`}
+                    onClick={() => handleClick("Large")}
+                >
+                    Large
+                </button>
             </h3>
         </div>
     )

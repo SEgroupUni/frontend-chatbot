@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 import OptionTable from "./OptionTable";
 import "./OptionDrawer.css";
 
+
 export default function OptionToggle() {
   const [open, setOpen] = useState(false);
 
+  const [userOptions, setUserOptions] = useState({
+    fontSize: null, ageGroup: null, gender: null, historyInterest: null,
+  })
 
   const toggle = () => setOpen(prev => !prev);
 
@@ -21,7 +25,10 @@ export default function OptionToggle() {
       </button>
 
       <div className={`options-drawer ${open ? "open" : ""}`}>
-        <OptionTable />
+        <OptionTable 
+          userOptions={userOptions}
+          setUserOptions={setUserOptions}        
+        />
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
 import "./ChatBox.css";
+import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
+
+const sendSound = new Audio(sendSoundFile);
 
 function createChatBubble(sender, text) {
   return { sender, text };
@@ -23,6 +26,9 @@ export default function ChatBox() {
 
   // Wrapper for passing all state to handleSend
   const sendMessage = () => {
+    if (userScript.trim() === "") return;
+    sendSound.play();
+
     handleSend({
       name,
       setName,
@@ -63,3 +69,4 @@ export default function ChatBox() {
     </div>
   );
 }
+
