@@ -1,9 +1,12 @@
-export default function VisitCard() {
+
+export default function DefaultCard(props) {
   return (
     <div className="VisitCard">
-    <h2>Plan Your Visit to the British Museum</h2>
-    <p>Discover the wonders of human history, art, and culture at the British Museum. Whether you're a first-time visitor or a returning guest, we have everything you need to make your visit memorable.</p>
-    <p>Explore our world-class exhibitions </p>
+      <h2>{props.header}</h2>
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+      <h3>{props.title2}</h3>
+      <p>{props.description2}</p>
     </div>
-    );
+  );
 }

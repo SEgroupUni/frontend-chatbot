@@ -81,6 +81,7 @@ h1 {
   background-size: cover;
   background-position: center;
 }
+
 .NavBar {
   display: flex;
   justify-content: center;
@@ -112,7 +113,6 @@ h1 {
   color:#000000;
   background-color: #f9f9f9;
 }
-
 .EmailLink {
   color: inherit;
   text-decoration: underline;
@@ -130,4 +130,23 @@ h1 {
 
 .NotFound {
   text-align: center;
+}
+
+.VisitCard {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 400px;
+  margin: 16px auto;
+  color:#000000;
+  background-color: #f9f9f9;
+}
+.VisitContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.Galleries {
+  color: inherit;
+  text-decoration: underline;
 }

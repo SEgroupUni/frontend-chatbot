@@ -7,7 +7,13 @@ export default function SupportCard() {
     <p> - Care for, study and share the collection </p>
     <p> - Engage local and global communities with what we do </p>
     <p>Read our supporter case studies to discover just a few of the fantastic collaborations already in place.</p>
-    <button className="DonateButton" onClick={() => (window.location.href = "https://www.britishmuseum.org/support-us/donate-now")}> Donate Now</button>
+    <button className="DonateButton" onClick={() => window.open(
+      "https://www.britishmuseum.org/support-us/donate-now",
+      "_blank",
+      "noopener,noreferrer"
+    )
+  }
+> Donate Now</button>
     </div>
     );
 }
