@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar.jsx";
+import ContactCard from "../components/ContactCard.jsx";
 
 export default function Contact() {
   return (
     <div>
       <NavBar />
-      <h1>Contact Page</h1>
+      <h1>Contact Us</h1>
+      <ContactCard />
     </div>
   );
 }

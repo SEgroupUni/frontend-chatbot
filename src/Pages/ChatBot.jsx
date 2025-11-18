@@ -1,5 +1,3 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar.jsx";
 
 export default function ChatBot() {

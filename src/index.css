@@ -22,16 +22,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -44,7 +34,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffffff;
 }
 button:focus,
 button:focus-visible {
@@ -57,19 +47,34 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #ffffff;
   }
   button {
     background-color: #f9f9f9;
   }
 }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(#D8B56A, #C8A951, #A33E2A);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2.5em;
+  line-height: 1.1;
+}
 
 .chatbot-card {
-  background-color: #2a2a2a;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  max-width: 400px;
+  max-width: 500px;
   margin: 16px auto;
   text-align: center;
   background-image: url('assets/Ram.webp');
@@ -82,9 +87,47 @@ button:focus-visible {
   align-items: center;    
   width: 100%;            
   padding: 10px 0;
+  margin-top: 0;
+  background-color: #000000;
+  gap: 10px;
 }
-h1 {
+.Logo {
+  height: 50px;
+  width: auto;
+  margin-right: 20px;
+  align-items: left;
+}
+.Home, .Visit, .Map, .SupportUs, .Contact, .StartChat {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.ContactCard {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 400px;
+  margin: 16px auto;
+  
+  color:#000000;
+  background-color: #f9f9f9;
+}
+
+.EmailLink {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.SupportCard {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-width: 800px;
+  margin: 16px auto;
+  color:#000000;
+  background-color: #f9f9f9;
+}
+
+.NotFound {
   text-align: center;
-  margin-top: 20px;
-  font-size: 2.5em;
 }
