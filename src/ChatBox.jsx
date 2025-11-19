@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
-import "./ChatBox.css";
 import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
+import './index.css';
 
 const sendSound = new Audio(sendSoundFile);
 
@@ -41,7 +41,7 @@ export default function ChatBox() {
 
   return (
     <div className="chat-box">
-      <div className="chatbox-messages">
+      <div className="chat-box-messages">
         {chatScripts.map((bubble, index) => (
           <div
             key={index}
@@ -57,7 +57,7 @@ export default function ChatBox() {
       </div>
 
       <div className="chat-bubble user input-bubble">
-        <input
+        <input 
           type="text"
           value={userScript}
           onChange={(e) => setUserScript(e.target.value)}

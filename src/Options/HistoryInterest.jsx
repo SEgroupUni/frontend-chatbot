@@ -1,6 +1,5 @@
 import { useState } from "react";
-import './SelectedButton.css'
-
+import "./OptionTable.css";
 
 export default function HistoryInterest({setUserOptions, currentSelection}) {
 

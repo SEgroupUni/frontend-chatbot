@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Map, About, SupportUs, Contact, NotFound, ChatBot } from "./Pages";
+import { Home, Map, About, SupportUs, Contact, NotFound } from "./Pages" ;
 import './index.css';
 import App from './App.jsx';
 

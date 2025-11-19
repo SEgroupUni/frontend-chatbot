@@ -1,23 +1,27 @@
 import ChatBox from "./ChatBox";
 import useInactivityTimeout from "./useInactivityTimeout";
-import OptionToggle from "./OptionToggle";
-import "./App.css";
-import Home from "./Pages/Home";
+import OptionToggle from "./Options/OptionToggle";
 import { Navigate } from "react-router-dom";
+import NavBar from "./components/NavBar"
+import './index.css';
 
 function App() {
-  const showTimeout = useInactivityTimeout(20000);
+  const showTimeout = useInactivityTimeout(200000000);
 
   if (showTimeout) {
-    return <Navigate to="/" replace />; // full redirect to the home page
+    // would like to add a are you here page before navigating to the home page //
+    return <Navigate to="/" replace />; // redirects to the home page
   }
 
   return (
-    <div className="App">
+    <div> 
+      <NavBar/>
+    <div>
       <OptionToggle />
       <div className="chatbox-wrapper">
         <ChatBox />
       </div>
+    </div>
     </div>
   );
 }
