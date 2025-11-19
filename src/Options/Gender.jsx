@@ -6,7 +6,7 @@ export default function Gender({setUserOptions, currentSelection}) {
     const handleClick=(genderValue) => {
         setUserOptions((prev) => ({
             ...prev,
-            gender: genderValue,
+            gender: prev.gender === genderValue ? null : genderValue
         }))
     };
     return(
@@ -14,7 +14,7 @@ export default function Gender({setUserOptions, currentSelection}) {
             <h2 style = {{textAlign: "center"}}>
                 Gender:
             </h2>
-            <h3>
+            <div className="option-buttons">
                 <button
                     className={`button ${currentSelection === "Male" ? "selected" : ""}`}
                     onClick={() => handleClick("Male")}
@@ -37,7 +37,7 @@ export default function Gender({setUserOptions, currentSelection}) {
                     Prefer not to say
                 </button>
  
-            </h3>
+            </div>
         </div>
     )
 }

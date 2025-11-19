@@ -7,12 +7,13 @@ import './index.css';
 
 function App() {
   const showTimeout = useInactivityTimeout(200000000);
+  
 
   if (showTimeout) {
     // would like to add a are you here page before navigating to the home page //
     return <Navigate to="/" replace />; // redirects to the home page
   }
-
+  
   return (
     <div> 
       <NavBar/>
@@ -25,6 +26,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 

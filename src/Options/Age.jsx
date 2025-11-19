@@ -6,7 +6,7 @@ export default function Age({setUserOptions, currentSelection}) {
     const handleClick = (ageValue) => {
         setUserOptions((prev) => ({
             ...prev,
-            ageGroup: ageValue,
+            ageGroup: prev.ageGroup === ageValue ? null : ageValue,
         }));
     };
 
@@ -15,7 +15,7 @@ export default function Age({setUserOptions, currentSelection}) {
             <h2 style = {{textAlign: "center"}}>
                 Age:
             </h2>
-            <h3>
+            <div className="option-buttons">
                 <button
                     className={`button ${currentSelection === "3-11" ? "selected" : ""}`}
                     onClick={() => handleClick("3-11")}
@@ -24,20 +24,20 @@ export default function Age({setUserOptions, currentSelection}) {
                 </button>
                 
                 <button
-                    className={`button ${currentSelection === "12-16" ? "selected" : ""}`}
-                    onClick={() => handleClick("12-16")}
+                    className={`button ${currentSelection === "12–17" ? "selected" : ""}`}
+                    onClick={() => handleClick("12–17")}
                 >
-                    12-16
-                </button>
-
-                <button
-                    className={`button ${currentSelection === "17+" ? "selected" : ""}`}
-                    onClick={() => handleClick("17+")}
-                >
-                    17+
+                    12–17
                 </button>
                 
-            </h3>
+                <button
+                    className={`button ${currentSelection === "18+" ? "selected" : ""}`}
+                    onClick={() => handleClick("18+")}
+                >
+                    18+
+                </button>
+            </div>
+            
         </div>
     )
 }

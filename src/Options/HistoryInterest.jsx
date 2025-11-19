@@ -6,7 +6,7 @@ export default function HistoryInterest({setUserOptions, currentSelection}) {
     const handleClick=(interestValue) => {
         setUserOptions((prev) => ({
             ...prev,
-            historyInterest: interestValue,
+            historyInterest: prev.historyInterest === interestValue ? null : interestValue
         }));
     };
     return(
@@ -14,23 +14,23 @@ export default function HistoryInterest({setUserOptions, currentSelection}) {
             <h2 style = {{textAlign: "center"}}>
                 History engagement:
             </h2>
-            <h3>
+            <div className="option-buttons">
                 <button
                     className={`button ${
-                        currentSelection === "I enjoy history" ? "selected" : ""}`}
-                        onClick={() => handleClick("I enjoy history")}
+                        currentSelection === "History Enthusiast" ? "selected" : ""}`}
+                        onClick={() => handleClick("History Enthusiast")}
                 >
-                    I enjoy history
+                    History Enthusiast
                 </button>
 
                 <button
                     className={`button ${
-                        currentSelection === "I am chatting casually" ? "selected" : ""}`}
-                        onClick={() => handleClick("I am chatting casually")}
+                        currentSelection === "Casually Chatting " ? "selected" : ""}`}
+                        onClick={() => handleClick("Casually Chatting ")}
                 >
-                    I am chatting casually
+                    Casually Chatting 
                 </button>
-            </h3>
+            </div>
         </div>
     )
 }

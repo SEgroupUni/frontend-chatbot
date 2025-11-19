@@ -6,15 +6,15 @@ export default function Font({setUserOptions, currentSelection}){
     const handleClick = (sizeValue) => {
         setUserOptions((prev) => ({
             ...prev,
-            fontSize: sizeValue, 
+            fontSize: prev.fontSize === sizeValue ? null : sizeValue
         }))
     };
     return(
         <div>
             <h2 style = {{textAlign: "center"}}>
-                FontSize:
+                Font Size:
             </h2>
-            <h3>
+            <div className="option-buttons">
                 <button
                     className={`button ${currentSelection === "Small" ? "selected" : ""}`}
                     onClick={() => handleClick("Small")}
@@ -35,7 +35,7 @@ export default function Font({setUserOptions, currentSelection}){
                 >
                     Large
                 </button>
-            </h3>
+            </div>
         </div>
     )
 }

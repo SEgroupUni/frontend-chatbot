@@ -3,7 +3,9 @@ import Font from './FontSize'
 import Age from './Age'
 import Gender from './Gender'
 import HistoryInterest from './HistoryInterest'
+import DarkMode from './DarkMode'
 import { use } from 'react'
+
 
 export default function OptionTable({userOptions, setUserOptions}) {
   return (
@@ -32,6 +34,11 @@ export default function OptionTable({userOptions, setUserOptions}) {
           className="history-container"
           setUserOptions={setUserOptions}
           currentSelection={userOptions.historyInterest}
+        />
+        <DarkMode
+          className="darkmode-container"
+          setUserOptions={setUserOptions}
+          currentSelection={userOptions.DarkMode}
         />
       </div>
     </div>
