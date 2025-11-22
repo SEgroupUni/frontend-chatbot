@@ -3,4 +3,5 @@ export { default as Map } from "./Map.jsx";
 export { default as About } from "./Visit.jsx";
 export { default as SupportUs } from "./SupportUs.jsx";
 export { default as Contact } from "./Contact.jsx";
+export { default as TimeOut } from "./TimeOut.jsx";
 export { default as NotFound } from "./NotFound.jsx";

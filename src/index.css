@@ -154,6 +154,19 @@ h1 {
   text-decoration: underline;
 }
 
+.TimeoutOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+}
+
 /* -------------------- ChatBot Page & Component CSS -------------------- */
 
 .chatbox-wrapper {

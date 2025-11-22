@@ -1,35 +1,38 @@
+import { useState, useEffect } from "react";
 import ChatBox from "./ChatBox";
-import useInactivityTimeout from "./useInactivityTimeout";
 import OptionToggle from "./Options/OptionToggle";
-import { Navigate } from "react-router-dom";
-import NavBar from "./components/NavBar"
+import NavBar from "./components/NavBar";
+import TimeoutOverlay from "./Pages/TimeOut.jsx";
+import useInactivityTimeout from "./useInactivityTimeout";
 import './index.css';
 
-function App() {
-  const showTimeout = useInactivityTimeout(200000000);
-  
+export default function App() {
+  const [overlayVisible, setOverlayVisible] = useState(false);
+  const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000);
 
-  if (showTimeout) {
-    // would like to add a are you here page before navigating to the home page //
-    return <Navigate to="/" replace />; // redirects to the home page
-  }
-  
+  useEffect(() => {
+    if (isInactive) setOverlayVisible(true);
+  }, [isInactive]);
+
   return (
-    <div> 
-      <NavBar/>
     <div>
+      <NavBar />
       <OptionToggle />
+
+      {overlayVisible && (
+        <TimeoutOverlay
+          onTimeoutEnd={() => window.location.href = "/"} // redirect home
+          onContinue={() => {
+            setOverlayVisible(false); // hide overlay
+            resetInactivity();        // restart inactivity timer
+            setIsInactive(false);     // ensure inactive state cleared
+          }}
+        />
+      )}
+
       <div className="chatbox-wrapper">
         <ChatBox />
       </div>
     </div>
-    </div>
   );
 }
-
-
-export default App;
-
-
-
-

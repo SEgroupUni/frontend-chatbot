@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="map" element={<Map />} />  
       <Route path="supportus" element={<SupportUs />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="aichatbot" element={<App />} />
+      <Route path="aichatbot" element={<App />} />   
       <Route path="*" element={<NotFound />} /> 
     </Routes>
   </BrowserRouter>

@@ -1,36 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /**
  * Custom hook to track inactivity.
  * @param {number} timeout - Time in ms before user is considered inactive.
- * @returns {boolean} isInactive - true if user inactive.
+ * @returns {[isInactive, resetInactivity]} - Inactivity state and a reset function.
  */
 export default function useInactivityTimeout(timeout = 10000) {
   const [isInactive, setIsInactive] = useState(false);
+  const timerRef = useRef(null);
+
+  const resetInactivity = () => {
+    setIsInactive(false); // reset inactive state
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setIsInactive(true), timeout);
+  };
 
   useEffect(() => {
-    if (isInactive) return; // already timed out, do nothing
+    // Start timer
+    resetInactivity();
 
-    let timer = setTimeout(() => setIsInactive(true), timeout);
-
-    const resetTimer = () => {
-      // Only reset the timer if user hasn't timed out yet
-      if (!isInactive) {
-        clearTimeout(timer);
-        timer = setTimeout(() => setIsInactive(true), timeout);
-      }
-    };
-
-    // Listen for user activity
-    window.addEventListener("keydown", resetTimer);
-    window.addEventListener("mousemove", resetTimer);
+    // Reset on any user activity
+    const events = ["mousemove", "keydown", "mousedown", "touchstart"];
+    events.forEach(e => window.addEventListener(e, resetInactivity));
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("keydown", resetTimer);
-      window.removeEventListener("mousemove", resetTimer);
+      if (timerRef.current) clearTimeout(timerRef.current);
+      events.forEach(e => window.removeEventListener(e, resetInactivity));
     };
-  }, [timeout, isInactive]);
+  }, [timeout]);
 
-  return isInactive;
+  return [isInactive, resetInactivity, setIsInactive];
 }
+
