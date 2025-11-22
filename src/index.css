@@ -273,3 +273,14 @@ h1, h2 {
   height: 525px;   /* adjust as needed */
   object-fit: cover;   /* keeps image proportions */
 }
+
+.ResetChat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+}
+
+.ResetButton {
+  background-color: #A33E2A;
+}

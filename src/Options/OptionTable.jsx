@@ -3,7 +3,6 @@ import Age from './Age'
 import Gender from './Gender'
 import HistoryInterest from './HistoryInterest'
 import DarkMode from './DarkMode'
-import { use } from 'react'
 
 
 export default function OptionTable({userOptions, setUserOptions}) {

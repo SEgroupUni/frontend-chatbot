@@ -22,7 +22,7 @@ export default function App() {
 
       {overlayVisible && (
         <TimeoutOverlay
-          onTimeoutEnd={() => window.location.href = "/"} // redirect home
+          onTimeoutEnd={() => window.location.href = "/"} 
           onContinue={() => {
             setOverlayVisible(false); // hide overlay
             resetInactivity();        // restart inactivity timer
@@ -35,6 +35,9 @@ export default function App() {
           <RamBot />
         </div>
         <ChatBox />
+      </div>
+      <div className="ResetChat">
+        <button className="ResetButton" onClick={() => (window.location.href = "AiChatbot")}>New Chat</button>
       </div>
     </div>
   );
