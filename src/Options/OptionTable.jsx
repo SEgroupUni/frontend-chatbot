@@ -1,5 +1,4 @@
 import './OptionTable.css'
-import Font from './FontSize'
 import Age from './Age'
 import Gender from './Gender'
 import HistoryInterest from './HistoryInterest'
@@ -14,12 +13,6 @@ export default function OptionTable({userOptions, setUserOptions}) {
       <p>For best user experience select from the options below</p>
 
       <div className="table-container">
-
-        <Font
-          className="font-container"
-          setUserOptions={setUserOptions}
-          currentSelection={userOptions.fontSize}
-        />
         <Age
           className="age-container"
           setUserOptions={setUserOptions}

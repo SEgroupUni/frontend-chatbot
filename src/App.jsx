@@ -4,6 +4,7 @@ import OptionToggle from "./Options/OptionToggle";
 import NavBar from "./components/NavBar";
 import TimeoutOverlay from "./Pages/TimeOut.jsx";
 import useInactivityTimeout from "./useInactivityTimeout";
+import RamBot from "./Ram.jsx"
 import './index.css';
 
 export default function App() {
@@ -29,8 +30,10 @@ export default function App() {
           }}
         />
       )}
-
       <div className="chatbox-wrapper">
+        <div className="RamAvatar">
+          <RamBot />
+        </div>
         <ChatBox />
       </div>
     </div>

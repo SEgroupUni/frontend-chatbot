@@ -64,7 +64,7 @@ body {
   background: linear-gradient(#D8B56A, #C8A951, #A33E2A);
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   margin-top: 20px;
   font-size: 2.5em;
@@ -77,12 +77,21 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  max-width: 500px;
+  max-width: 700px;      /* increase width */
+  width: 90%;            /* responsive width */
+  height: 300px;         /* explicit height */
   margin: 16px auto;
   text-align: center;
+  font-size: 20px;
   background-image: url('assets/Ram.webp');
   background-size: cover;
   background-position: center;
+  cursor: pointer;
+}
+
+.StartSection {
+  margin-top: 16px;
+  padding: 26px 24px;
 }
 
 .NavBar {
@@ -140,14 +149,16 @@ h1 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
   max-width: 400px;
-  margin: 16px auto;
+  justify-content: center;
   color:#000000;
   background-color: #f9f9f9;
+  align-items: center;
 }
 .VisitContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;
 }
 .Galleries {
   color: inherit;
@@ -167,12 +178,32 @@ h1 {
   text-align: center;
 }
 
+.rotation-card {
+  width: 90%;
+  max-width: 700px;
+  margin: 20px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.rotation-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+
 /* -------------------- ChatBot Page & Component CSS -------------------- */
 
 .chatbox-wrapper {
   display: flex;
   justify-content: center;   
-  align-items: center;        
+  align-items: flex-start;        
+  gap: 20px;
 }
 
 /* ChatBox.css */
@@ -237,3 +268,8 @@ h1 {
   gap: 8px;
 }
 
+.RamAvatar img {
+  width: 525px;    /* adjust as needed */
+  height: 525px;   /* adjust as needed */
+  object-fit: cover;   /* keeps image proportions */
+}
