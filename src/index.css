@@ -77,9 +77,8 @@ h1, h2 {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  max-width: 700px;      /* increase width */
-  width: 90%;            /* responsive width */
-  height: 300px;         /* explicit height */
+  max-width: 700px;        
+  height: 300px;         
   margin: 16px auto;
   text-align: center;
   font-size: 20px;
@@ -94,7 +93,7 @@ h1, h2 {
   padding: 26px 24px;
 }
 
-.NavBar {
+.nav-bar {
   display: flex;
   justify-content: center;
   align-items: center;    
@@ -104,18 +103,18 @@ h1, h2 {
   background-color: #000000;
   gap: 10px;
 }
-.Logo {
+.logo {
   height: 50px;
   width: auto;
   margin-right: 20px;
   align-items: left;
 }
-.Home, .Visit, .Map, .SupportUs, .Contact, .StartChat, .DonateButton {
+.home, .visit, .map, .support-us, .contact, .start-chat, .donate-button {
   background-color: #000000;
   color: #ffffff;
 }
 
-.ContactCard {
+.contact-card {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -125,12 +124,12 @@ h1, h2 {
   color:#000000;
   background-color: #f9f9f9;
 }
-.EmailLink {
+.email-link {
   color: inherit;
   text-decoration: underline;
 }
 
-.SupportCard {
+.support-card {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -140,11 +139,12 @@ h1, h2 {
   background-color: #f9f9f9;
 }
 
-.NotFound {
+.not-found {
   text-align: center;
+  height: 100vh;
 }
 
-.VisitCard {
+.visit-card {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -154,18 +154,18 @@ h1, h2 {
   background-color: #f9f9f9;
   align-items: center;
 }
-.VisitContainer {
+.visit-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
-.Galleries {
+.galleries {
   color: inherit;
   text-decoration: underline;
 }
 
-.TimeoutOverlay {
+.timeout-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
@@ -267,20 +267,20 @@ h1, h2 {
   gap: 8px;
 }
 
-.RamAvatar img {
-  width: 400px;    /* adjust as needed */
-  height: 525px;   /* adjust as needed */
-  object-fit: cover;   /* keeps image proportions */
+.ram-avatar img {
+  width: 400px;   
+  height: 525px;   
+  object-fit: cover;  
 }
 
-.ResetChat {
+.reset-chat {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10vh;
 }
 
-.ResetButton {
+.reset-button {
   background-color:  #1e1e1e;
 }
 

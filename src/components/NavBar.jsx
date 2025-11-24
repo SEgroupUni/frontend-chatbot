@@ -6,16 +6,16 @@ export default function NavBar() {
   const navigate = useNavigate();
   return (
     <nav>
-        <ul className="NavBar">
+        <ul className="nav-bar">
         <div>
-        <img src={Logo} className="Logo" alt="BritishMuseumLogo"/>
+        <img src={Logo} className="logo" alt="BritishMuseumLogo"/>
         </div>
 
-      <button className="Home" onClick={() => navigate("/")}>Home</button>
-        <button className="Visit" onClick={() => navigate("/About")}>Visit</button>
-        <button className="Map" onClick={() => navigate("/Map")}>Map</button>
-        <button className="SupportUs" onClick={() => navigate("/SupportUs")}>Support Us</button>
-        <button className="Contact" onClick={() => navigate("/Contact")}>Contact</button>
+      <button className="home" onClick={() => navigate("/")}>Home</button>
+        <button className="visit" onClick={() => navigate("/About")}>Visit</button>
+        <button className="map" onClick={() => navigate("/Map")}>Map</button>
+        <button className="support-us" onClick={() => navigate("/SupportUs")}>Support Us</button>
+        <button className="contact" onClick={() => navigate("/Contact")}>Contact</button>
         </ul>
     </nav>
   );

@@ -7,8 +7,8 @@ export default function ChatbotCard() {
     <div className="chatbot-card" onClick={() => navigate("AiChatbot")}>
       <h2>Ramses ii AI ChatBot!</h2>
       <p>Get instant answers to your questions.</p>
-      <div className="StartSection">
-        <button className="StartChat" onClick={() => navigate("AiChatbot")}>Start Chat</button>
+      <div className="start-section">
+        <button className="start-chat" onClick={() => navigate("AiChatbot")}>Start Chat</button>
       </div>
     </div>
   );

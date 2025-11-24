@@ -31,13 +31,13 @@ export default function App() {
         />
       )}
       <div className="chatbox-wrapper">
-        <div className="RamAvatar">
+        <div className="ram-avatar">
           <RamBot />
         </div>
         <ChatBox />
       </div>
-      <div className="ResetChat">
-        <button className="ResetButton" onClick={() => (window.location.href = "AiChatbot")}>Start New Chat</button>
+      <div className="reset-chat">
+        <button className="reset-button" onClick={() => (window.location.href = "AiChatbot")}>Start New Chat</button>
       </div>
     </div>
   );

@@ -6,13 +6,13 @@ export default function About() {
     <div>
         <NavBar />
       <h1>Plan Your Visit</h1>
-      <div className="VisitContainer">
+      <div className="visit-container">
     <DefaultCard
       header="Immerse yourself in two million years of human history, art and culture."
       description={
     <>
       Book your free ticket for Museum entry in advance to receive key information and updates before your visit and priority entry during busy periods. In our galleries come face-to-face with objects from the Sutton Hoo ship burial, explore the wonderful collection of the Islamic world and learn more about Egyptian mummies. Please see the{" "}
-      <a className="Galleries"
+      <a className="galleries"
         href="https://www.britishmuseum.org/visit#gallery-information"
         target="_blank"
         rel="noopener noreferrer"

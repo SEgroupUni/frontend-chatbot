@@ -3,7 +3,7 @@ import "./index.css"
 
 export default function RamBot() {
     return (
-    <div className="RamBot">
+    <div className="ram-bot">
         <img src={Ram} alt="Ramesses II"/>
     </div>
   );

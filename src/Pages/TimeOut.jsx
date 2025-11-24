@@ -24,7 +24,7 @@ export default function TimeoutOverlay({ onTimeoutEnd, onContinue }) {
   }, [onTimeoutEnd, onContinue]);
 
   return (
-    <div className="TimeoutOverlay">
+    <div className="timeout-overlay">
       <h1>Are you still there?</h1>
       <h2>Session will time out in: <Timer start={5} /></h2>
       <p>Move the mouse or tap anywhere to continue your session</p>

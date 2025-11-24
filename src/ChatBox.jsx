@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
 import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
-import Ram from "./assets/RamAvatar.png"; // Avatar import
+import Ram from "./assets/RamAvatar.png"; 
+import UserAvatar from "./assets/Placeholder.png"; 
 import "./index.css";
 
 const sendSound = new Audio(sendSoundFile);
@@ -21,7 +22,6 @@ export default function ChatBox() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatScripts]);
 
-  // Wrapper for passing all state to handleSend
   const sendMessage = () => {
     if (userScript.trim() === "") return;
     sendSound.play();
@@ -49,6 +49,8 @@ export default function ChatBox() {
             >
               <div className="chat-text">
                 <div className="chat-header">
+
+                  {/* BOT ICON */}
                   {isBot && (
                     <img
                       src={Ram}
@@ -56,8 +58,19 @@ export default function ChatBox() {
                       className="chat-avatar"
                     />
                   )}
+
+                  {/* USER ICON */}
+                  {!isBot && (
+                    <img
+                      src={UserAvatar}
+                      alt="User Avatar"
+                      className="chat-avatar"
+                    />
+                  )}
+
                   <strong className="chat-name">{bubble.sender}:</strong>
                 </div>
+
                 <div className="chat-message">{bubble.text}</div>
               </div>
             </div>

@@ -108,7 +108,7 @@ export default function Map() {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
       onWheel={handleWheel}
-      onClick={(e) => e.stopPropagation()} // ✨ Stop click from closing modal
+      onClick={(e) => e.stopPropagation()} 
     />
   </div>
 )}
