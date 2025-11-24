@@ -37,7 +37,7 @@ export default function App() {
         <ChatBox />
       </div>
       <div className="ResetChat">
-        <button className="ResetButton" onClick={() => (window.location.href = "AiChatbot")}>New Chat</button>
+        <button className="ResetButton" onClick={() => (window.location.href = "AiChatbot")}>Start New Chat</button>
       </div>
     </div>
   );
