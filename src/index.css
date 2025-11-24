@@ -61,7 +61,7 @@ body {
   min-height: 100%;
   background: linear-gradient(#D8B56A, #C8A951, #A33E2A);
   background-attachment: fixed;
-  padding-bottom: 80px
+  padding-bottom: 20px
 }
 
 h1, h2 {
@@ -268,7 +268,7 @@ h1, h2 {
 }
 
 .RamAvatar img {
-  width: 525px;    /* adjust as needed */
+  width: 400px;    /* adjust as needed */
   height: 525px;   /* adjust as needed */
   object-fit: cover;   /* keeps image proportions */
 }
@@ -282,4 +282,24 @@ h1, h2 {
 
 .ResetButton {
   background-color:  #1e1e1e;
+}
+
+.chat-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.chat-name { 
+  font-weight: bold;
+  line-height: 1;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  gap: 5px; 
 }
