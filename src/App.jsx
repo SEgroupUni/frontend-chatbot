@@ -30,7 +30,7 @@ export default function App() {
           }}
         />
       )}
-      <div className="chatbox-wrapper">
+      <div className="chat-box-wrapper">
         <div className="ram-avatar">
           <RamBot />
         </div>

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
 import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
 import Ram from "./assets/RamAvatar.png"; 
-import UserAvatar from "./assets/Placeholder.png"; 
+import UserAvatar from "./assets/User_icon.png"; 
 import "./index.css";
 
 const sendSound = new Audio(sendSoundFile);
