@@ -4,7 +4,6 @@ import Gender from './Gender'
 import HistoryInterest from './HistoryInterest'
 import DarkMode from './DarkMode'
 
-
 export default function OptionTable({userOptions, setUserOptions}) {
   return (
     <div className="option-table-container">

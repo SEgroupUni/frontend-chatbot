@@ -1,9 +1,17 @@
 import { useState } from "react";
 import "./OptionTable.css";
+import offSound from "../assets/ToggleOffReduced.m4a"; 
+import onSound from "../assets/ToggleOnReduced.m4a";
 
 export default function Age({setUserOptions, currentSelection}) {
 
     const handleClick = (ageValue) => {
+        if (currentSelection === ageValue) { 
+            new Audio(offSound).play();
+        } else {
+            new Audio(onSound).play();
+        }
+
         setUserOptions((prev) => ({
             ...prev,
             ageGroup: prev.ageGroup === ageValue ? null : ageValue,
