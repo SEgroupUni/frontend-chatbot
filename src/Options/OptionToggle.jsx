@@ -1,30 +1,35 @@
 import { useState, useEffect } from "react";
 import OptionTable from "./OptionTable";
 import "./OptionDrawer.css";
-import SwipeSound from "../assets/OptionsTableSwipe.mp3";
+import SwipeSound from "../assets/OptionsTableSwipeIncreased.m4a";
 
-export default function OptionToggle() {
+export default function OptionToggle({ globalVolume, setGlobalVolume }) {
   const [open, setOpen] = useState(false);
 
   const [userOptions, setUserOptions] = useState({
     fontSize: null, ageGroup: null, gender: null, historyInterest: null,
   })
 
-
   const toggle = () => {
-    new Audio(SwipeSound).play();
+    const audio = new Audio(SwipeSound);
+    audio.volume = globalVolume;
+    audio.play();
+    
     setOpen(prev => !prev);
   };
 
   useEffect(() => {
     const openDrawer = () => {
-      new Audio(SwipeSound).play();
+      const audio = new Audio(SwipeSound);
+      audio.volume = globalVolume;
+      audio.play();
+      
       setOpen(true);
     } 
     
     window.addEventListener("open-options", openDrawer);
     return () => window.removeEventListener("open-options", openDrawer);
-  }, []);
+  }, [globalVolume]); 
 
   return (
     <div className="option-toggle-wrapper">
@@ -35,10 +40,10 @@ export default function OptionToggle() {
       <div className={`options-drawer ${open ? "open" : ""}`}>
         <OptionTable 
           userOptions={userOptions}
-          setUserOptions={setUserOptions}        
+          setUserOptions={setUserOptions}
+          globalVolume={globalVolume}       
         />
       </div>
     </div>
   );
 }
-

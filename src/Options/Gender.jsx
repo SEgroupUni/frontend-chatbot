@@ -1,16 +1,13 @@
-import { useState } from "react";
 import "./OptionTable.css";
 import offSound from "../assets/ToggleOffReduced.m4a"; 
 import onSound from "../assets/ToggleOnReduced.m4a";
 
-export default function Gender({setUserOptions, currentSelection}) {
+export default function Gender({setUserOptions, currentSelection, globalVolume}) {
 
     const handleClick=(genderValue) => {
-        if (currentSelection === genderValue) { 
-            new Audio(offSound).play();
-        } else {
-            new Audio(onSound).play();
-        }
+        const audio = new Audio(currentSelection === genderValue ? offSound : onSound);
+        audio.volume = globalVolume;
+        audio.play();
 
         setUserOptions((prev) => ({
             ...prev,
@@ -49,4 +46,3 @@ export default function Gender({setUserOptions, currentSelection}) {
         </div>
     )
 }
-

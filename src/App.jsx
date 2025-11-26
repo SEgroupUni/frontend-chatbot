@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
-import ChatBox from "./ChatBox";
-import OptionToggle from "./Options/OptionToggle";
 import NavBar from "./components/NavBar";
 import TimeoutOverlay from "./Pages/TimeOut.jsx";
 import useInactivityTimeout from "./useInactivityTimeout";
-import RamBot from "./Ram.jsx"
+import RamBot from "./Ram.jsx";
 import './index.css';
+
+import ChatBox from "./ChatBox";
+import OptionToggle from "./Options/OptionToggle";
+import VolumeController from "./components/VolumeController"; 
 
 export default function App() {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000);
+
+  // Global Volume State
+  const [globalVolume, setGlobalVolume] = useState(0.5); 
 
   useEffect(() => {
     if (isInactive) setOverlayVisible(true);
@@ -18,23 +23,45 @@ export default function App() {
   return (
     <div>
       <NavBar />
-      <OptionToggle />
+      
+      <OptionToggle 
+        globalVolume={globalVolume} 
+        setGlobalVolume={setGlobalVolume} 
+      />
 
       {overlayVisible && (
         <TimeoutOverlay
           onTimeoutEnd={() => window.location.href = "/"} 
           onContinue={() => {
-            setOverlayVisible(false); // hide overlay
-            resetInactivity();        // restart inactivity timer
-            setIsInactive(false);     // ensure inactive state cleared
+            setOverlayVisible(false);
+            resetInactivity();
+            setIsInactive(false);
           }}
+          globalVolume={globalVolume}
         />
       )}
-      <div className="chat-box-wrapper">
+
+<div className="chat-box-wrapper">
+        
         <div className="ram-avatar">
           <RamBot />
         </div>
-        <ChatBox />
+        
+
+        <div style={{ position: 'relative' }}>
+            
+            <ChatBox globalVolume={globalVolume} />
+
+            <div style={{ 
+                position: 'absolute', 
+                bottom: '10px',      
+                left: '100%',        
+                marginLeft: '15px',  
+                zIndex: 10
+            }}>
+                <VolumeController volume={globalVolume} setVolume={setGlobalVolume} />
+            </div>
+        </div>
       </div>
       <div className="reset-chat">
         <button className="reset-button" onClick={() => (window.location.href = "AiChatbot")}>Start New Chat</button>

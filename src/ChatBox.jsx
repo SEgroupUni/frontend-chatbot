@@ -5,9 +5,9 @@ import Ram from "./assets/RamAvatar.png";
 import UserAvatar from "./assets/User_icon.png"; 
 import "./index.css";
 
-const sendSound = new Audio(sendSoundFile);
 
-export default function ChatBox() {
+
+export default function ChatBox({ globalVolume }) { 
   const [name, setName] = useState("User");
   const [userScript, setUserScript] = useState("");
   const [chatScripts, setChatScripts] = useState([
@@ -24,7 +24,11 @@ export default function ChatBox() {
 
   const sendMessage = () => {
     if (userScript.trim() === "") return;
-    sendSound.play();
+
+    // Create audio instance, set volume
+    const audio = new Audio(sendSoundFile);
+    audio.volume = globalVolume; 
+    audio.play();
 
     handleSend({
       name,
@@ -50,7 +54,6 @@ export default function ChatBox() {
               <div className="chat-text">
                 <div className="chat-header">
 
-                  {/* BOT ICON */}
                   {isBot && (
                     <img
                       src={Ram}
@@ -59,7 +62,6 @@ export default function ChatBox() {
                     />
                   )}
 
-                  {/* USER ICON */}
                   {!isBot && (
                     <img
                       src={UserAvatar}

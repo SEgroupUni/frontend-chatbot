@@ -1,17 +1,13 @@
-import { useState } from "react";
 import "./OptionTable.css";
 import offSound from "../assets/ToggleOffReduced.m4a"; 
 import onSound from "../assets/ToggleOnReduced.m4a";
 
-export default function HistoryInterest({setUserOptions, currentSelection}) {
+export default function HistoryInterest({setUserOptions, currentSelection, globalVolume}) {
 
     const handleClick=(interestValue) => {
-
-        if (currentSelection === interestValue) { 
-            new Audio(offSound).play();
-        } else {
-            new Audio(onSound).play();
-        }
+        const audio = new Audio(currentSelection === interestValue ? offSound : onSound);
+        audio.volume = globalVolume;
+        audio.play();
 
         setUserOptions((prev) => ({
             ...prev,
@@ -43,4 +39,3 @@ export default function HistoryInterest({setUserOptions, currentSelection}) {
         </div>
     )
 }
-
