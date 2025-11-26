@@ -1,13 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
 import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
-import Ram from "./assets/RamAvatar.png"; 
-import UserAvatar from "./assets/User_icon.png"; 
+
+import DefaultUserAvatar from "./assets/Avatar_0.png"; 
+import RamAvatar from "./assets/RamAvatar.png";
+
 import "./index.css";
 
-
-
-export default function ChatBox({ globalVolume }) { 
+export default function ChatBox({ 
+  globalVolume, 
+  onUserMessage, 
+  botStatus,
+  userAvatar        // ⬅ NEW: custom avatar from App
+}) { 
   const [name, setName] = useState("User");
   const [userScript, setUserScript] = useState("");
   const [chatScripts, setChatScripts] = useState([
@@ -25,7 +30,6 @@ export default function ChatBox({ globalVolume }) {
   const sendMessage = () => {
     if (userScript.trim() === "") return;
 
-    // Create audio instance, set volume
     const audio = new Audio(sendSoundFile);
     audio.volume = globalVolume; 
     audio.play();
@@ -38,6 +42,10 @@ export default function ChatBox({ globalVolume }) {
       chatScripts,
       setChatScripts
     });
+
+    if (onUserMessage) onUserMessage();
+
+    setUserScript("");
   };
 
   return (
@@ -56,15 +64,15 @@ export default function ChatBox({ globalVolume }) {
 
                   {isBot && (
                     <img
-                      src={Ram}
-                      alt="Ramesses Avatar"
+                      src={RamAvatar}
+                      alt="Ram Avatar"
                       className="chat-avatar"
                     />
                   )}
 
                   {!isBot && (
                     <img
-                      src={UserAvatar}
+                      src={userAvatar || DefaultUserAvatar}   // ⬅ UPDATED: dynamic avatar
                       alt="User Avatar"
                       className="chat-avatar"
                     />

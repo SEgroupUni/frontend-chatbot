@@ -58,9 +58,8 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  min-height: 100vh;
   background: linear-gradient(#D8B56A, #C8A951, #A33E2A);
-  background-attachment: fixed;
   padding-bottom: 20px
 }
 

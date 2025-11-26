@@ -3,18 +3,24 @@ import OptionTable from "./OptionTable";
 import "./OptionDrawer.css";
 import SwipeSound from "../assets/OptionsTableSwipeIncreased.m4a";
 
-export default function OptionToggle({ globalVolume, setGlobalVolume }) {
+export default function OptionToggle({ 
+  globalVolume, 
+  setGlobalVolume,
+
+  // NEW: pass avatar state from App
+  selectedAvatar,
+  onAvatarChange
+}) {
   const [open, setOpen] = useState(false);
 
   const [userOptions, setUserOptions] = useState({
     fontSize: null, ageGroup: null, gender: null, historyInterest: null,
-  })
+  });
 
   const toggle = () => {
     const audio = new Audio(SwipeSound);
     audio.volume = globalVolume;
     audio.play();
-    
     setOpen(prev => !prev);
   };
 
@@ -23,7 +29,6 @@ export default function OptionToggle({ globalVolume, setGlobalVolume }) {
       const audio = new Audio(SwipeSound);
       audio.volume = globalVolume;
       audio.play();
-      
       setOpen(true);
     } 
     
@@ -38,10 +43,12 @@ export default function OptionToggle({ globalVolume, setGlobalVolume }) {
       </button>
 
       <div className={`options-drawer ${open ? "open" : ""}`}>
-        <OptionTable 
+        <OptionTable
           userOptions={userOptions}
           setUserOptions={setUserOptions}
-          globalVolume={globalVolume}       
+          globalVolume={globalVolume}
+          selectedAvatar={selectedAvatar}
+          onAvatarChange={onAvatarChange}
         />
       </div>
     </div>

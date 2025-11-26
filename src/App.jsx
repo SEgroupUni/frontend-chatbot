@@ -12,22 +12,41 @@ import VolumeController from "./components/VolumeController";
 export default function App() {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000);
+  const [globalVolume, setGlobalVolume] = useState(0.5);
 
-  // Global Volume State
-  const [globalVolume, setGlobalVolume] = useState(0.5); 
+  // NEW — user avatar selection
+  const [userAvatar, setUserAvatar] = useState(null);
+
+  // Bot avatar state: null = default, "thinking", "talking"
+  const [botStatus, setBotStatus] = useState(null);
 
   useEffect(() => {
     if (isInactive) setOverlayVisible(true);
   }, [isInactive]);
 
+  // Called when the user sends a message
+  const handleUserMessage = () => {
+    setBotStatus("thinking"); 
+
+    setTimeout(() => {
+      setBotStatus("talking");
+
+      setTimeout(() => {
+        setBotStatus(null);
+      }, 1500);
+    }, 1000);
+  };
+
   return (
     <div>
       <NavBar />
       
-      <OptionToggle 
-        globalVolume={globalVolume} 
-        setGlobalVolume={setGlobalVolume} 
-      />
+        <OptionToggle
+          globalVolume={globalVolume}
+          setGlobalVolume={setGlobalVolume}
+          selectedAvatar={userAvatar}
+          onAvatarChange={setUserAvatar}
+        />
 
       {overlayVisible && (
         <TimeoutOverlay
@@ -41,30 +60,43 @@ export default function App() {
         />
       )}
 
-<div className="chat-box-wrapper">
-        
+      <div className="chat-box-wrapper">
         <div className="ram-avatar">
-          <RamBot />
+          <RamBot status={botStatus} /> 
         </div>
-        
 
         <div style={{ position: 'relative' }}>
-            
-            <ChatBox globalVolume={globalVolume} />
+          <ChatBox 
+            globalVolume={globalVolume}
+            onUserMessage={handleUserMessage}
+            botStatus={botStatus}
 
-            <div style={{ 
-                position: 'absolute', 
-                bottom: '10px',      
-                left: '100%',        
-                marginLeft: '15px',  
-                zIndex: 10
-            }}>
-                <VolumeController volume={globalVolume} setVolume={setGlobalVolume} />
-            </div>
+            // NEW — pass avatar to ChatBox for rendering in bubbles
+            userAvatar={userAvatar}
+          />
+
+          <div style={{ 
+            position: 'absolute', 
+            bottom: '10px',      
+            left: '100%',        
+            marginLeft: '15px',  
+            zIndex: 10
+          }}>
+            <VolumeController 
+              volume={globalVolume} 
+              setVolume={setGlobalVolume} 
+            />
+          </div>
         </div>
       </div>
+
       <div className="reset-chat">
-        <button className="reset-button" onClick={() => (window.location.href = "AiChatbot")}>Start New Chat</button>
+        <button 
+          className="reset-button" 
+          onClick={() => (window.location.href = "AiChatbot")}
+        >
+          Start New Chat
+        </button>
       </div>
     </div>
   );
