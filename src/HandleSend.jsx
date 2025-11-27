@@ -1,6 +1,6 @@
 import createChatBubble from "./CreateChatBubble"; 
 
-export default function handleSend({
+export default async function handleSend({
   name,
   setName,
   userScript,
@@ -10,33 +10,51 @@ export default function handleSend({
 }) {
   if (userScript.trim() === "") return;
 
-  // Decide what name to use
+  // Logic to set the User's Name 
   let currentName = name;
-  if (chatScripts.length === 1) {
+  const isFirstMessage = chatScripts.length === 1;
+
+  if (isFirstMessage) {
     currentName = userScript;
     setName(userScript);
   }
 
+  // Create the User Bubble 
   const userBubble = createChatBubble(currentName, userScript);
   setChatScripts(prev => [...prev, userBubble]);
-  setUserScript("");
+  setUserScript(""); 
 
-  // Delay bot reply
-  setTimeout(() => {
-    let botBubble;
-    if (chatScripts.length === 1) {
-      botBubble = createChatBubble(
-        "Ram Ram the chatbot man",
-        `Welcome ${currentName}! please provide details to aid your experience.`
-      );
-      window.dispatchEvent(new Event("open-options"));
-    } else {
-      botBubble = createChatBubble(
-        "Ram Ram the chatbot man",
-        "This is a bot reply. Will go to backend."
-      );
-    }
+  // Send to Backend
+  try {
+    const response = await fetch("http://localhost:3001/api/message", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ 
+            text: userScript,
+            sessionData: { userName: currentName } 
+        }) 
+    });
+
+    const data = await response.json();
+
+    // Create the Bot Bubble with the real reply
+    const botBubble = createChatBubble(
+        "Ram Ram the chatbot man", 
+        data.message || "Error: No reply from AI"
+    );
 
     setChatScripts(prev => [...prev, botBubble]);
-  }, 500);
+
+    // Open options on the first message
+    if (isFirstMessage) {
+        window.dispatchEvent(new Event("open-options"));
+    }
+
+  } catch (error) {
+    console.error("Connection Failed:", error);
+    const errorBubble = createChatBubble("System", "Error: Could not connect to backend.");
+    setChatScripts(prev => [...prev, errorBubble]);
+  }
 }
