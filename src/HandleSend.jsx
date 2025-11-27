@@ -41,7 +41,7 @@ export default function handleSend({
     if (window.speechSynthesis) {
       const utterance = new SpeechSynthesisUtterance(botMessage);
 
-      utterance.voice = window.speechSynthesis.getVoices()[5];
+      utterance.voice = window.speechSynthesis.getVoices()[0];
 
       window.speechSynthesis.speak(utterance);
     }
