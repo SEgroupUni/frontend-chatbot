@@ -1,6 +1,6 @@
 import createChatBubble from "./CreateChatBubble"; 
 
-export default async function handleSend({
+export default function handleSend({
   name,
   setName,
   userScript,
@@ -10,51 +10,41 @@ export default async function handleSend({
 }) {
   if (userScript.trim() === "") return;
 
-  // Logic to set the User's Name 
+  // Decide what name to use
   let currentName = name;
-  const isFirstMessage = chatScripts.length === 1;
-
-  if (isFirstMessage) {
+  if (chatScripts.length === 1) {
     currentName = userScript;
     setName(userScript);
   }
 
-  // Create the User Bubble 
   const userBubble = createChatBubble(currentName, userScript);
   setChatScripts(prev => [...prev, userBubble]);
-  setUserScript(""); 
+  setUserScript("");
+  
+  // Delay bot reply
+  setTimeout(() => {
+    let botBubble;
+    let botMessage;
 
-  // Send to Backend
-  try {
-    const response = await fetch("http://localhost:3001/api/message", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ 
-            text: userScript,
-            sessionData: { userName: currentName } 
-        }) 
-    });
-
-    const data = await response.json();
-
-    // Create the Bot Bubble with the real reply
-    const botBubble = createChatBubble(
-        "Ram Ram the chatbot man", 
-        data.message || "Error: No reply from AI"
-    );
+    if (chatScripts.length === 1) {
+      botMessage = `Welcome ${currentName}! please provide details to aid your experience.`;
+      botBubble = createChatBubble("Ram Ram the chatbot man", botMessage);
+      window.dispatchEvent(new Event("open-options"));
+    } else {
+      botMessage = "This is a bot reply. Will go to backend.";
+      botBubble = createChatBubble("Ram Ram the chatbot man", botMessage);
+    }
 
     setChatScripts(prev => [...prev, botBubble]);
 
-    // Open options on the first message
-    if (isFirstMessage) {
-        window.dispatchEvent(new Event("open-options"));
+    // Text-to-Speech for bot response
+    if (window.speechSynthesis) {
+      const utterance = new SpeechSynthesisUtterance(botMessage);
+
+      utterance.voice = window.speechSynthesis.getVoices()[5];
+
+      window.speechSynthesis.speak(utterance);
     }
 
-  } catch (error) {
-    console.error("Connection Failed:", error);
-    const errorBubble = createChatBubble("System", "Error: Could not connect to backend.");
-    setChatScripts(prev => [...prev, errorBubble]);
-  }
+  }, 500);
 }
