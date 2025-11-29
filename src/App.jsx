@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import NavBar from "./components/NavBar";
 import TimeoutOverlay from "./Pages/TimeOut.jsx";
 import useInactivityTimeout from "./useInactivityTimeout";
 import RamBot from "./Ram.jsx";
 import './index.css';
 
 import ChatBox from "./ChatBox";
-import OptionToggle from "./Options/OptionToggle";
 import VolumeController from "./components/VolumeController"; 
 
 export default function App() {
@@ -38,16 +36,8 @@ export default function App() {
   };
 
   return (
-    <div>
-      <NavBar />
-      
-        <OptionToggle
-          globalVolume={globalVolume}
-          setGlobalVolume={setGlobalVolume}
-          selectedAvatar={userAvatar}
-          onAvatarChange={setUserAvatar}
-        />
-
+    <div className="background">
+    
       {overlayVisible && (
         <TimeoutOverlay
           onTimeoutEnd={() => window.location.href = "/"} 
