@@ -14,15 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -68,24 +59,53 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;          /* full screen height */
+  display: flex;             
+  justify-content: center;    /* center horizontally */
+  align-items: center;        /* center vertically */
+  flex-direction: column;     /* keep items stacked */
+  margin: 0;
+  padding: 0;
 }
 
-h1, h2 {
+h1 {
   text-align: center;
   margin-top: 20px;
   font-size: 2.5em;
-  line-height: 1.1;
+  line-height: 1; 
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2em;
+  line-height: 0.8; 
+  color: black;
+}
+
+p {
+  color: black;
+  margin-top: 0px;
+  font-size: 1em;
+  line-height: 1.1; 
+  font-weight: 600;
 }
 
 /* -------------------- Main Pages Component CSS -------------------- */
+.welcome {
+  font-size: 50px;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  margin-bottom: 8px;
+}
 
 .chatbot-card {
-  border-radius: 8px;
+  border-radius: 20px;
+  border: 5px solid black;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  max-width: 700px;        
-  height: 300px;         
+  width: 1100px;
+  height: 550px;       
   margin: 16px auto;
   text-align: center;
   font-size: 20px;
@@ -93,38 +113,33 @@ h1, h2 {
   background-size: cover;
   background-position: center;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;  
 }
 
-.StartSection {
-  margin-top: 16px;
-  padding: 26px 24px;
+.card-info {
+  margin-top: 50px;
 }
 
-.logo {
-  height: 50px;
-  width: auto;
-  margin-right: 20px;
-  align-items: left;
+.start-section {
+  margin-top: 250px;       /* pushes it to the bottom */
+  display: flex;
+  justify-content: center;
 }
-.home, .start-chat {
+
+.home, .start-chat, .back-home {
   background-color: #000000;
   color: #ffffff;
 }
 
 .not-found {
+  display: flex;
+  flex-direction: column;   
+  justify-content: center;  
+  align-items: center;       
   text-align: center;
-  height: 100vh;
-}
-
-.visit-card {
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  max-width: 400px;
-  justify-content: center;
-  color:#000000;
-  background-color: #f9f9f9;
-  align-items: center;
+  height: 100vh; 
+  color: black;             
 }
 
 .timeout-overlay {
