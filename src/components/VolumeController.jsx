@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./VolumeController.css";
 
 export default function VolumeController({ volume, setVolume }) {
   const [lastVolume, setLastVolume] = useState(0.5);

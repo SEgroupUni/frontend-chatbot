@@ -1,23 +1,24 @@
 import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
 import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
+import DefaultUserAvatar from "./assets/Avatar_0.png";
+import ChatInput from "./components/ChatInput";
+import ChatControls from "./components/ChatControls"; 
 
-import DefaultUserAvatar from "./assets/Avatar_0.png"; 
-import RamAvatar from "./assets/RamAvatar.png";
+import "./ChatPage.css";
 
-import "./index.css";
-
-export default function ChatBox({ 
-  globalVolume, 
-  onUserMessage, 
+export default function ChatBox({
+  globalVolume,
+  setGlobalVolume,
+  onUserMessage,
   botStatus,
-  userAvatar        // ⬅ NEW: custom avatar from App
-}) { 
+  userAvatar
+}) {
   const [name, setName] = useState("User");
   const [userScript, setUserScript] = useState("");
   const [chatScripts, setChatScripts] = useState([
     {
-      sender: "Ram Ram the chatbot man",
+      sender: "Ramesses II",
       text: "I the Pharaoh Ram Ram the chatbot man! What is your name, mortal?"
     }
   ]);
@@ -27,79 +28,79 @@ export default function ChatBox({
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatScripts]);
 
-  const sendMessage = () => {
-    if (userScript.trim() === "") return;
+  const sendMessage = (messageFromInput) => {
+    const finalMessage = messageFromInput || userScript;
 
+    if (!finalMessage.trim()) return;
+
+    // Play sound
     const audio = new Audio(sendSoundFile);
-    audio.volume = globalVolume; 
+    audio.volume = globalVolume;
     audio.play();
 
     handleSend({
       name,
       setName,
-      userScript,
+      userScript: finalMessage,
       setUserScript,
       chatScripts,
       setChatScripts
     });
 
     if (onUserMessage) onUserMessage();
-
     setUserScript("");
   };
 
   return (
-    <div className="chat-box">
-      <div className="chat-box-messages">
-        {chatScripts.map((bubble, index) => {
-          const isBot = bubble.sender === "Ram Ram the chatbot man";
+  <div className="chat-wrapper">
+      
+      {/* CHAT WINDOW */}
+      <div className="chat-box">
+      <div>
+        {/* ChatBox Buttons */}
+        <ChatControls />
+      </div>
 
-          return (
-            <div
-              key={index}
-              className={`chat-bubble ${isBot ? "bot" : "user"}`}
-            >
-              <div className="chat-text">
-                <div className="chat-header">
+        <div className="chat-box-messages">
+          {chatScripts.map((bubble, index) => {
+            const isBot = bubble.sender === "Ramesses II";
 
-                  {isBot && (
-                    <img
-                      src={RamAvatar}
-                      alt="Ram Avatar"
-                      className="chat-avatar"
-                    />
-                  )}
+            return (
+              <div
+                key={index}
+                className={`chat-bubble ${isBot ? "bot" : "user"}`}
+              >
+                <div className="chat-text">
+                  <div className="chat-header">
 
-                  {!isBot && (
-                    <img
-                      src={userAvatar || DefaultUserAvatar}   // ⬅ UPDATED: dynamic avatar
-                      alt="User Avatar"
-                      className="chat-avatar"
-                    />
-                  )}
 
-                  <strong className="chat-name">{bubble.sender}:</strong>
+                    {!isBot && (
+                      <img
+                        src={userAvatar || DefaultUserAvatar}
+                        alt="User Avatar"
+                        className="chat-avatar"
+                      />
+                    )}
+
+                    <strong className="chat-name">{bubble.sender}:</strong>
+                  </div>
+
+                  <div className="chat-message">{bubble.text}</div>
                 </div>
-
-                <div className="chat-message">{bubble.text}</div>
               </div>
-            </div>
-          );
-        })}
-
-        <div ref={messagesEndRef} />
+            );
+          })}
+          <div ref={messagesEndRef} />
+        </div>
       </div>
 
-      <div className="chat-bubble user input-bubble">
-        <input
-          type="text"
-          value={userScript}
-          onChange={(e) => setUserScript(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          placeholder="Enter your message..."
-        />
-        <button onClick={sendMessage}>Send</button>
-      </div>
+      {/* INPUT COMPONENT (clean + modular) */}
+      <ChatInput
+        onSend={sendMessage}             // ⬅ Sends message up to ChatBox
+        volume={globalVolume}            // ⬅ Controls global volume
+        setVolume={setGlobalVolume}      // ⬅ Updates global volume
+      />
+
     </div>
   );
 }

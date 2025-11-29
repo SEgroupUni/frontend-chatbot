@@ -1,0 +1,102 @@
+/* -------------------- Volume Controller CSS -------------------- */
+
+.windows-volume-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 25px; /* Pill shape */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* --- HOVER ANIMATION SETTINGS --- */
+  width: 24px;  /* Start small (icon only) */
+  height: 24px; /* Fixed height */
+  overflow: hidden; /* Hide slider when not hovering */
+  transition: width 0.3s ease-in-out, background-color 0.2s; 
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+
+/* When you hover over the container, expand it */
+.windows-volume-container:hover {
+  width: 160px; /* Expand enough to show the slider */
+}
+
+/* Reset icon button styling */
+.volume-btn,
+.volume-btn:hover,
+.volume-btn:focus {
+  background: none !important; 
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e1e1e;
+  width: 24px;
+  height: 24px;
+}
+
+.volume-icon {
+  fill: #000000;
+  flex-shrink: 0;
+  transition: fill 0.2s;
+}
+
+/* Red icon when muted */
+.volume-btn[title="Unmute"] .volume-icon {
+  fill: #d13438;
+}
+
+/* The wrapper that holds the slider and text */
+.volume-slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s ease-in-out; 
+  width: 120px; 
+  pointer-events: none; /* Prevent clicking when hidden */
+}
+
+/* Reveal slider on hover */
+.windows-volume-container:hover .volume-slider-wrapper {
+  opacity: 1;
+  pointer-events: auto; /* Enable clicking */
+  transition-delay: 0.1s; 
+}
+
+.volume-text {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  color: #1e1e1e;
+  min-width: 25px;
+  text-align: right;
+  font-size: 14px;
+}
+
+/* Slider Bar Styling */
+.windows-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px; 
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.windows-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0078D4;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+}

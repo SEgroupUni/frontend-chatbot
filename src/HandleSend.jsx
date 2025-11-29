@@ -28,23 +28,14 @@ export default function handleSend({
 
     if (chatScripts.length === 1) {
       botMessage = `Welcome ${currentName}! please provide details to aid your experience.`;
-      botBubble = createChatBubble("Ram Ram the chatbot man", botMessage);
+      botBubble = createChatBubble("Ramesses II", botMessage);
       window.dispatchEvent(new Event("open-options"));
     } else {
       botMessage = "This is a bot reply. Will go to backend.";
-      botBubble = createChatBubble("Ram Ram the chatbot man", botMessage);
+      botBubble = createChatBubble("Ramesses II", botMessage);
     }
 
     setChatScripts(prev => [...prev, botBubble]);
-
-    // Text-to-Speech for bot response
-    if (window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance(botMessage);
-
-      utterance.voice = window.speechSynthesis.getVoices()[0];
-
-      window.speechSynthesis.speak(utterance);
-    }
 
   }, 500);
 }
