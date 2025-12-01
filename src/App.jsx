@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import TimeoutOverlay from "./Pages/TimeOut.jsx";
-import useInactivityTimeout from "./useInactivityTimeout";
-import RamBot from "./Ram.jsx";
+import useInactivityTimeout from "./components/useInactivityTimeout.jsx";
+import RamBot from "./components/Ram.jsx";
 import './index.css';
 
-import ChatBox from "./ChatBox";
+import ChatBox from "./components/ChatBox.jsx";
 import VolumeController from "./components/VolumeController"; 
 
 export default function App() {
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000000);
+  const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000);
   const [globalVolume, setGlobalVolume] = useState(0.5);
 
   // NEW — user avatar selection

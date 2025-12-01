@@ -11,7 +11,7 @@
 
 /* ChatBox.css */
 .chat-box {
-  width: 100%;
+  width: 600px;
   height: 700px;
   background-color: #101111;
   display: flex;
@@ -42,7 +42,7 @@
 /* -------------------- Enter your Message Box -------------------- */
 
 .chat-input-container {
-  width: 100%;
+  width: 600;
   background-color: #101111;
   padding: 12px;
   margin-top: 12px;
@@ -107,9 +107,10 @@
 }
 
 .ram-avatar img {
-  width: 400px;   
-  height: 525px;   
+  width: 500px;   
+  height: 800px;   
   object-fit: cover;  
+
 }
 
 .reset-chat {

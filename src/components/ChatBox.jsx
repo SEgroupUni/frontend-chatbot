@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import handleSend from "./HandleSend";
-import sendSoundFile from "./assets/Send-sound-effect-1-trimmed.m4a";
-import DefaultUserAvatar from "./assets/Avatar_0.png";
-import ChatInput from "./components/ChatInput";
-import ChatControls from "./components/ChatControls"; 
+import sendSoundFile from "../assets/Send-sound-effect-1-trimmed.m4a";
+import DefaultUserAvatar from "../assets/Avatar_0.png";
+import ChatInput from "./ChatInput";
+import ChatControls from "./ChatControls"; 
 
 import "./ChatPage.css";
 
@@ -19,7 +19,7 @@ export default function ChatBox({
   const [chatScripts, setChatScripts] = useState([
     {
       sender: "Ramesses II",
-      text: "I the Pharaoh Ram Ram the chatbot man! What is your name, mortal?"
+      text: "Greetings! I am the great Ramesses II. What is your name, visitor?"
     }
   ]);
 
@@ -94,11 +94,10 @@ export default function ChatBox({
         </div>
       </div>
 
-      {/* INPUT COMPONENT (clean + modular) */}
       <ChatInput
-        onSend={sendMessage}             // ⬅ Sends message up to ChatBox
-        volume={globalVolume}            // ⬅ Controls global volume
-        setVolume={setGlobalVolume}      // ⬅ Updates global volume
+        onSend={sendMessage}         
+        volume={globalVolume}           
+        setVolume={setGlobalVolume}     
       />
 
     </div>

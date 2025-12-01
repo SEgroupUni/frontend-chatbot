@@ -1,7 +1,7 @@
-import Default from "./assets/RamAvatar.png"
-import Thinking from "./assets/Thinking.png";
-import Talking from "./assets/Talking.png";
-import "./index.css"
+import Default from "../assets/Default1.png"
+import Thinking from "../assets/Thinking.png";
+import Talking from "../assets/Talking.png";
+import "../index.css"
 
 export default function RamBot({ status }) {
   
@@ -17,7 +17,7 @@ export default function RamBot({ status }) {
   };
 
   return (
-    <div className="ram-bot">
+    <div>
       <img src={getImage()} alt="Ramesses II" />
     </div>
   );

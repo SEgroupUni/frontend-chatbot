@@ -27,7 +27,7 @@ export default function handleSend({
     let botMessage;
 
     if (chatScripts.length === 1) {
-      botMessage = `Welcome ${currentName}! please provide details to aid your experience.`;
+      botMessage = `Welcome, ${currentName}! Shall we explore the museum, Ancient Egyptian history, or what it meant to live as a Pharaoh?`;
       botBubble = createChatBubble("Ramesses II", botMessage);
       window.dispatchEvent(new Event("open-options"));
     } else {

@@ -1,4 +1,4 @@
-import "../ChatPage.css";
+import "./ChatPage.css";
 
 export default function ChatControls() {
   return (
