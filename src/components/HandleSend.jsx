@@ -33,6 +33,7 @@ export default async function handleSend({
   setChatScripts(prev => [...prev, createChatBubble(currentName, userScript)]);
   setUserScript("");
 
+  // Backend response
   setTimeout(async () => {
     try {
       const res = await fetch("http://localhost:3001/api/messages", {
@@ -42,7 +43,7 @@ export default async function handleSend({
       });
 
       const data = await res.json();
-      const botMessage = data.reply ?? "No reply from backend.";
+      const botMessage = data.response ?? "No reply from backend.";
 
       const botBubble = createChatBubble("Ramesses II", botMessage);
       setChatScripts(prev => [...prev, botBubble]);
