@@ -16,12 +16,12 @@ export default function TimeoutOverlay({ onTimeoutEnd, onContinue }) {
       endAudio.play().catch(e => console.log("Audio play failed:", e));
     }, 4300);
 
-    // Auto end session after 5 seconds (or whatever Timer counts)
+    // Auto end session after 5 seconds 
     const timerEnd = setTimeout(() => {
       onTimeoutEnd();
     }, 5000);
 
-    // Cancel overlay on any user activity
+    // Cancel overlay when movement is detected
     const events = ["click", "touchstart", "mousemove", "keydown"];
     const resetHandler = () => {
       warningAudio.pause();

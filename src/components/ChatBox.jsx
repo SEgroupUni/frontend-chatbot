@@ -19,7 +19,7 @@ export default function ChatBox({
   const [chatScripts, setChatScripts] = useState([
     {
       sender: "Ramesses II",
-      text: "Greetings! I am the great Ramesses II. What is your name, visitor?"
+      text: "Greetings! I am the great Ramesses II. What is your name visitor?"
     }
   ]);
 

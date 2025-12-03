@@ -1,4 +1,4 @@
-/* -------------------- ChatBot Page & Component CSS -------------------- */
+/* -------------------- ChatBot Page Main Components -------------------- */
 
 .chat-box-wrapper {
   display: flex;
@@ -9,10 +9,9 @@
   
 }
 
-/* ChatBox.css */
 .chat-box {
-  width: 600px;
-  height: 700px;
+  width: 500px;
+  height: 650px;
   background-color: #101111;
   display: flex;
   flex-direction: column;
@@ -21,25 +20,28 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* Messages container scrollable */
+.ram-avatar img {
+  width: 450px;   
+  height: 750px;   
+  object-fit: cover;  
+
+}
+
 .chat-box-messages {
   padding-top: 10px;
-  flex: 1;                  /* fill remaining height */
-  overflow-y: auto;         /* enable vertical scroll */
+  flex: 1;                 
+  overflow-y: auto;         
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 10px;
 }
 
-/* Individual chat bubble */
 .chat-bubble {
   padding: 8px 12px;
   border-radius: 8px;
   background-color: #0a0a0a;
 }
-
-/* -------------------- Enter your Message Box -------------------- */
 
 .chat-input-container {
   width: 600;
@@ -50,7 +52,6 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* Input bar stays the same */
 .chat-input-bar {
   display: flex;
   gap: 8px;
@@ -76,23 +77,25 @@
   font-weight: bold;
 }
 
-/* User vs Chatbot styling (optional) */
+/* -------------------- Chat Elements -------------------- */
+
+/* User vs Chatbot styling */
 .chat-bubble.user {
   align-self: flex-start;
   background-color: #26619C;
 }
 
-/* BOT BUBBLES — align left */
+/* Bot Bubbles */
 .chat-bubble.bot {
   align-self: flex-start;
-  background-color: #0D1A2D; /* bot color */
+  background-color: #0D1A2D; 
   text-align: left;
 }
 
-/* USER BUBBLES — align right */
+/* User Bubbles */
 .chat-bubble.user {
   align-self: flex-end;
-  background-color: #26619C; /* user color */
+  background-color: #26619C;
   text-align: right;
 }
 
@@ -104,24 +107,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-}
-
-.ram-avatar img {
-  width: 500px;   
-  height: 800px;   
-  object-fit: cover;  
-
-}
-
-.reset-chat {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-}
-
-.reset-button {
-  background-color:  #1e1e1e;
 }
 
 .chat-avatar {

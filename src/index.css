@@ -50,7 +50,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /*background: linear-gradient(#D8B56A, #C8A951, #A33E2A);*/
   padding-bottom: 20px
 }
 
@@ -59,11 +58,15 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;          /* full screen height */
+/* Makes sure image covers whole page */
+  min-height: 100vh; 
+  margin-top: 10vh;          
+  margin-bottom: 10vh; 
+  
   display: flex;             
-  justify-content: center;    /* center horizontally */
-  align-items: center;        /* center vertically */
-  flex-direction: column;     /* keep items stacked */
+  justify-content: center;    
+  align-items: center;        
+  flex-direction: column;     
   margin: 0;
   padding: 0;
 }
@@ -102,8 +105,8 @@ p {
   border: 5px solid black;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  width: 1000px;
-  height: 500px;       
+  width: 900px;
+  height: 400px;       
   margin: 16px auto;
   text-align: center;
   font-size: 20px;
@@ -117,11 +120,11 @@ p {
 }
 
 .card-info {
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .start-section {
-  margin-top: 250px;       /* pushes it to the bottom */
+  margin-top: 170px;    
   display: flex;
   justify-content: center;
 }
@@ -130,6 +133,8 @@ p {
   background-color: #000000;
   color: #ffffff;
 }
+
+/* -------------------- Other Pages CSS -------------------- */
 
 .not-found {
   display: flex;

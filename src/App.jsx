@@ -3,9 +3,7 @@ import TimeoutOverlay from "./Pages/TimeOut.jsx";
 import useInactivityTimeout from "./components/useInactivityTimeout.jsx";
 import RamBot from "./components/Ram.jsx";
 import './index.css';
-
 import ChatBox from "./components/ChatBox.jsx";
-import VolumeController from "./components/VolumeController"; 
 
 export default function App() {
   const [overlayVisible, setOverlayVisible] = useState(false);
@@ -37,7 +35,7 @@ export default function App() {
 
   return (
     <div className="background">
-    
+    {/* Timeout page after 20s inactivity, after popup expires will go to home page */}
       {overlayVisible && (
         <TimeoutOverlay
           onTimeoutEnd={() => window.location.href = "/"} 
@@ -49,7 +47,7 @@ export default function App() {
           globalVolume={globalVolume}
         />
       )}
-
+    {/* Main components of chat page */} 
       <div className="chat-box-wrapper">
         <div className="ram-avatar">
           <RamBot status={botStatus} /> 
