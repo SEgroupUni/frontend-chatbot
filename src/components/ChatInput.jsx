@@ -7,7 +7,7 @@ export default function ChatInput({ onSend, volume, setVolume }) {
   const handleSend = () => {
     if (message.trim() === "") return;
     onSend(message);      // send message upward to ChatBox
-    setMessage("");       // clear input
+    setMessage("");       // clear input. on user input send post 
   };
 
   return (

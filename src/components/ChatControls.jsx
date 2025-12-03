@@ -13,7 +13,7 @@ export default function ChatControls() {
 
       <button
         className="chat-box-end"
-        onClick={() => (window.location.href = "/")}
+        onClick={() => (window.location.href = "/")} // end session post
       >
         End Session
       </button>

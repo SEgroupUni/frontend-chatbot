@@ -29,6 +29,6 @@ export default function useInactivityTimeout(timeout = 10000) {
     };
   }, [timeout]);
 
-  return [isInactive, resetInactivity, setIsInactive];
+  return [isInactive, resetInactivity, setIsInactive]; //post end session 
 }
 

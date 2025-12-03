@@ -14,4 +14,4 @@ export default function ChatbotCard() {
       </div>
     </div>
   );
-}
+} {/* on start click create post */}

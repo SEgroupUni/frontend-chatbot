@@ -19,7 +19,7 @@ export default function handleSend({
 
   const userBubble = createChatBubble(currentName, userScript);
   setChatScripts(prev => [...prev, userBubble]);
-  setUserScript("");
+  setUserScript(""); //user post 
   
   // Delay bot reply
   setTimeout(() => {
@@ -32,10 +32,10 @@ export default function handleSend({
       window.dispatchEvent(new Event("open-options"));
     } else {
       botMessage = "This is a bot reply. Will go to backend.";
-      botBubble = createChatBubble("Ramesses II", botMessage);
+      botBubble = createChatBubble("Ramesses II", botMessage); // return 
     }
 
-    setChatScripts(prev => [...prev, botBubble]);
+    setChatScripts(prev => [...prev, botBubble]); //return 
 
   }, 500);
 }
