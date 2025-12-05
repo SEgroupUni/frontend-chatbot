@@ -49,33 +49,46 @@ export default async function handleSend({
 
 
   try {
-    const res = await fetch("http://localhost:3001/api/messages", { //will retrieve response from backend and do animations too
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userInput: userScript })
-    });
+  const res = await fetch("http://localhost:3001/api/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userInput: userScript })
+  });
 
-    const data = await res.json();
-    const botMessage = data.response ?? "No reply from backend.";
+  const data = await res.json();
+  const botMessage = data.response ?? "No reply from backend.";
 
-    setBotStatus("talking");
+  setBotStatus("talking");
 
-    setChatScripts(prev => [
-      ...prev,
-      createChatBubble("Ramesses II", botMessage)
-    ]);
+  // Push main response
+  setChatScripts(prev => [
+    ...prev,
+    createChatBubble("Ramesses II", botMessage)
+  ]);
 
-    setTimeout(() => setBotStatus(null), 1500);
-
-  } catch (err) {
-    console.error("Backend error:", err);
-
-    setBotStatus("talking");
-    setChatScripts(prev => [
-      ...prev,
-      createChatBubble("Ramesses II", "Apologies, I cannot reach the server.")
-    ]);
-
-    setTimeout(() => setBotStatus(null), 1500);
+  // Will provide a follow up prompt if its provided by the backend.
+  if (data.userPrompt) {
+    // delay between answer to question and prompt
+    setTimeout(() => {
+      setChatScripts(prev => [
+        ...prev,
+        createChatBubble("Ramesses II", data.userPrompt)
+      ]);
+    }, 1200);
   }
+
+  // Reset animation
+  setTimeout(() => setBotStatus(null), 1500);
+
+} catch (err) {
+  console.error("Backend error:", err);
+
+  setBotStatus("talking");
+  setChatScripts(prev => [
+    ...prev,
+    createChatBubble("Ramesses II", "Apologies, I cannot reach the server.")
+  ]);
+
+  setTimeout(() => setBotStatus(null), 1500);
+}
 }
