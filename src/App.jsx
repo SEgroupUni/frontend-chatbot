@@ -38,7 +38,18 @@ export default function App() {
     {/* Timeout page after 20s inactivity, after popup expires will go to home page */}
       {overlayVisible && (
         <TimeoutOverlay
-          onTimeoutEnd={() => window.location.href = "/"} 
+          onTimeoutEnd={async () => { //will log session information to backend even if it times out.
+            try {
+              await fetch("http://localhost:3001/api/sessionEnd", {
+                 method: "POST",
+                headers: { "Content-Type": "application/json" }
+              });
+                } catch (err) {
+                  console.error("Error ending session on timeout:", err);
+                 } finally {
+                window.location.href = "/";
+            }
+}}
           onContinue={() => {
             setOverlayVisible(false);
             resetInactivity();
