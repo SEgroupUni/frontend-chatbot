@@ -11,8 +11,8 @@ export default function ChatBox({
   globalVolume,
   setGlobalVolume,
   onUserMessage,
-  botStatus,
-  userAvatar
+  userAvatar,
+  setBotStatus
 }) {
   const [name, setName] = useState("User");
   const [userScript, setUserScript] = useState("");
@@ -44,7 +44,8 @@ export default function ChatBox({
       userScript: finalMessage,
       setUserScript,
       chatScripts,
-      setChatScripts
+      setChatScripts,
+      setBotStatus
     });
 
     if (onUserMessage) onUserMessage();

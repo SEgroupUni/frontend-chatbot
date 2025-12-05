@@ -78,21 +78,17 @@
 }
 
 /* -------------------- Chat Elements -------------------- */
-
-/* User vs Chatbot styling */
 .chat-bubble.user {
   align-self: flex-start;
   background-color: #26619C;
 }
 
-/* Bot Bubbles */
 .chat-bubble.bot {
   align-self: flex-start;
   background-color: #0D1A2D; 
   text-align: left;
 }
 
-/* User Bubbles */
 .chat-bubble.user {
   align-self: flex-end;
   background-color: #26619C;
@@ -150,5 +146,5 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
-  transition: all 0.25s ease-in-out; /* smooth glow */
+  transition: all 0.25s ease-in-out;
 }

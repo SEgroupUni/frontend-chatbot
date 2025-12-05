@@ -10,20 +10,19 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   
   /* --- HOVER ANIMATION SETTINGS --- */
-  width: 24px;  /* Start small (icon only) */
-  height: 24px; /* Fixed height */
-  overflow: hidden; /* Hide slider when not hovering */
+  width: 24px; 
+  height: 24px; 
+  overflow: hidden; 
   transition: width 0.3s ease-in-out, background-color 0.2s; 
   border: 1px solid #e5e5e5;
   cursor: pointer;
 }
 
-/* When you hover over the container, expand it */
+/* Expands when hovering over it */
 .windows-volume-container:hover {
-  width: 160px; /* Expand enough to show the slider */
+  width: 160px; 
 }
 
-/* Reset icon button styling */
 .volume-btn,
 .volume-btn:hover,
 .volume-btn:focus {

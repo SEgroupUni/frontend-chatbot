@@ -6,57 +6,76 @@ export default async function handleSend({
   userScript,
   setUserScript,
   chatScripts,
-  setChatScripts
+  setChatScripts,
+  setBotStatus
 }) {
-  if (userScript.trim() === "") return;
+  if (!userScript.trim()) return;
 
   let currentName = name;
 
-  // STAGE 1 — First user message → name 
+  // Asks for Name
   if (chatScripts.length === 1) {
-    currentName = userScript;
-    setName(userScript);
-
     setChatScripts(prev => [...prev, createChatBubble(currentName, userScript)]);
     setUserScript("");
 
-    setTimeout(() => {
-      const botMessage = `Welcome, ${currentName}! What knowledge do you seek today? Maybe you'd like to learn about the exhibits at the museum, explore ancient Egyptian history or learn about my personal life as Pharaoh.`;
-      const botBubble = createChatBubble("Ramesses II", botMessage);
-      setChatScripts(prev => [...prev, botBubble]);
+    currentName = userScript;
+    setName(userScript);
+
+    setBotStatus("thinking");
+
+    setTimeout(() => { //Initial prompt to give users Ideas on what to ask. Bot will do thinking and talking animations 
+      const botMessage = `Welcome, ${currentName}! What knowledge do you seek today?  
+      Perhaps you are curious about the museum exhibits, Egyptian history,  
+      or my personal life as Pharaoh.`;
+
+      setBotStatus("talking");
+
+      setChatScripts(prev => [
+        ...prev,
+        createChatBubble("Ramesses II", botMessage)
+      ]);
+
+      setTimeout(() => setBotStatus(null), 1500);
     }, 600);
 
-    return; 
+    return;
   }
 
-  // STAGE 2 — Messages go to backend
+  // Chats with backend
   setChatScripts(prev => [...prev, createChatBubble(currentName, userScript)]);
   setUserScript("");
 
-  // Backend response
-  setTimeout(async () => {
-    try {
-      const res = await fetch("http://localhost:3001/api/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userInput: userScript })
-      });
+  setBotStatus("thinking");
 
-      const data = await res.json();
-      const botMessage = data.response ?? "No reply from backend.";
 
-      const botBubble = createChatBubble("Ramesses II", botMessage);
-      setChatScripts(prev => [...prev, botBubble]);
+  try {
+    const res = await fetch("http://localhost:3001/api/messages", { //will retrieve response from backend and do animations too
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userInput: userScript })
+    });
 
-      if (data.next) console.log("Next prompt:", data.next);
+    const data = await res.json();
+    const botMessage = data.response ?? "No reply from backend.";
 
-    } catch (err) {
-      console.error("Backend error:", err);
-      const errorBubble = createChatBubble(
-        "Ramesses II",
-        "Apologies, I'm unable to reach the server."
-      );
-      setChatScripts(prev => [...prev, errorBubble]);
-    }
-  }, 500);
+    setBotStatus("talking");
+
+    setChatScripts(prev => [
+      ...prev,
+      createChatBubble("Ramesses II", botMessage)
+    ]);
+
+    setTimeout(() => setBotStatus(null), 1500);
+
+  } catch (err) {
+    console.error("Backend error:", err);
+
+    setBotStatus("talking");
+    setChatScripts(prev => [
+      ...prev,
+      createChatBubble("Ramesses II", "Apologies, I cannot reach the server.")
+    ]);
+
+    setTimeout(() => setBotStatus(null), 1500);
+  }
 }

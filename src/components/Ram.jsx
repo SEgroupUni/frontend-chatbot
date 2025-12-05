@@ -4,7 +4,7 @@ import Talking from "../assets/Talking.png";
 import "../index.css"
 
 export default function RamBot({ status }) {
-  
+  // This is the loop of how the animations will be displayed. Goes default -> thinking -> talking -> default.
   const getImage = () => {
     switch (status) {
       case "thinking":

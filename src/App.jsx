@@ -4,14 +4,13 @@ import useInactivityTimeout from "./components/useInactivityTimeout.jsx";
 import RamBot from "./components/Ram.jsx";
 import './index.css';
 import ChatBox from "./components/ChatBox.jsx";
+import UserAvatar from "./assets/Avatar_0.png";
 
 export default function App() {
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000);
+  const [isInactive, resetInactivity, setIsInactive] = useInactivityTimeout(20000); //Time till timeout screen pops up
   const [globalVolume, setGlobalVolume] = useState(0.5);
-
-  // NEW — user avatar selection
-  const [userAvatar, setUserAvatar] = useState(null);
+  const [userAvatar] =  useState(UserAvatar); // User Icon
 
   // Bot avatar state: null = default, "thinking", "talking"
   const [botStatus, setBotStatus] = useState(null);
@@ -20,18 +19,7 @@ export default function App() {
     if (isInactive) setOverlayVisible(true);
   }, [isInactive]);
 
-  // Called when the user sends a message
-  const handleUserMessage = () => {
-    setBotStatus("thinking"); 
-
-    setTimeout(() => {
-      setBotStatus("talking");
-
-      setTimeout(() => {
-        setBotStatus(null);
-      }, 1500);
-    }, 1000);
-  };
+const handleUserMessage = () => {};
 
   return (
     <div className="background">
@@ -71,6 +59,7 @@ export default function App() {
             setGlobalVolume={setGlobalVolume}  
             onUserMessage={handleUserMessage}
             botStatus={botStatus}
+            setBotStatus={setBotStatus}
             userAvatar={userAvatar}
           />
 

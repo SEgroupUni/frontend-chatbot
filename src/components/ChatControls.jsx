@@ -9,24 +9,22 @@ export default function ChatControls() {
         headers: { "Content-Type": "application/json" }
       });
 
-      // Once backend confirms redirect to Home page
+      // Once backend confirms redirect to Home page, if not confirmed it'll still redirect just not save the session.
       window.location.href = "/";
     } catch (err) {
       console.error("Error ending session:", err);
-      // If there is an error still redirect but backend will not save log
       window.location.href = "/";
     }
   };
   
   const newSession = async () => {
     try {
-      // Close current session
+      // Close current session and then starts a new once similar to ChatBotCard.
       await fetch("http://localhost:3001/api/sessionEnd", {
         method: "POST",
         headers: { "Content-Type": "application/json" }
       });
 
-      // Start a brand new session with persona
       await fetch("http://localhost:3001/api/session/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,7 +36,7 @@ export default function ChatControls() {
   };
 
   return (
-    <div className="chat-box-controls">
+    <div className="chat-box-controls"> 
 
       <button
         className="chat-box-reset"

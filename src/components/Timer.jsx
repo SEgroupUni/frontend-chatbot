@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+// Timer for timeout page.
 export default function Timer() {
   const [timeLeft, setTimeLeft] = useState(5);
 
